@@ -1,0 +1,39 @@
+{
+  "name": "cyber-ecommerce",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "homepage": "https://vorenus85.github.io/cyber-ecommerce/",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "flowbite": "^2.5.2",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3",
+    "vue3-lottie": "^3.3.1"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "autoprefixer": "^10.4.20",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "gh-pages": "^6.1.1",
+    "postcss": "^8.4.47",
+    "prettier": "^3.2.5",
+    "sass-embedded": "^1.80.4",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.3.1",
+    "vue3-carousel": "^0.4.0"
+  }
+}
