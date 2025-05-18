@@ -2,7 +2,7 @@
   <div class="product-image">
     <RouterLink to="#">
       <img
-        :src="imageUrl(imageThumb, folder)"
+        :src="`${url}/${imageUrl}`"
         :alt="title"
         :width="width"
         :height="height"
@@ -13,21 +13,20 @@
 </template>
 <script setup>
 defineProps({
-  imageThumb: String,
+  imageUrl: String,
   width: {
     type: Number,
-    default: 160
+    default: 160,
   },
   height: {
     type: Number,
-    default: 160
+    default: 160,
   },
-  title: String
-})
+  title: String,
+});
 
-import { useImageUrl } from '@/composables/useImageUrl'
-const folder = 'products'
-const { imageUrl } = useImageUrl()
+const folder = "products";
+const url = import.meta.env.VITE_BASE_ENDPOINT;
 </script>
 <style lang="scss">
 .product-image {

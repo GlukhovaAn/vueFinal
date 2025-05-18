@@ -11,10 +11,18 @@
             {{ banner.subTitle }}
           </template>
           <template #btn>
-            <MainButton variant="secondary" :href="banner.btnUrl" :title="banner.btn"></MainButton>
+            <MainButton
+              variant="secondary"
+              :href="banner.btnUrl"
+              :title="banner.btn"
+            ></MainButton>
           </template>
           <template #image>
-            <img :alt="banner.alt" :src="imageUrl(banner.image, folder)" fetchpriority="high" />
+            <img
+              :alt="banner.alt"
+              :src="imageUrl(banner.image, folder)"
+              fetchpriority="high"
+            />
           </template>
         </HeroBanner>
       </template>
@@ -22,25 +30,25 @@
   </section>
 </template>
 <script setup>
-import HeroBanner from '@/components/modules/HeroBanner/HeroBanner.vue'
-import { useImageUrl } from '@/composables/useImageUrl.js'
-import MainButton from '@/components/modules/Common/MainButton.vue'
+import HeroBanner from "@/components/modules/HeroBanner/HeroBanner.vue";
+import { useImageUrl } from "@/hooks/useImageUrl.js";
+import MainButton from "@/components/modules/Common/MainButton.vue";
 
 const banners = [
   {
-    beforeTitle: 'Pro.Beyond.',
-    title: 'IPhone 14 <span>Pro</span>',
-    subTitle: 'Created to change everything for the better. For everyone',
-    alt: 'IPhone 14 Pro',
-    image: 'hero_banner_desktop.webp',
-    imageMobile: 'hero_banner_mobile.webp',
-    btn: 'Shop Now',
-    btnUrl: '#'
-  }
-]
+    beforeTitle: "Pro.Beyond.",
+    title: "IPhone 14 <span>Pro</span>",
+    subTitle: "Created to change everything for the better. For everyone",
+    alt: "IPhone 14 Pro",
+    image: "hero_banner_desktop.webp",
+    imageMobile: "hero_banner_mobile.webp",
+    btn: "Shop Now",
+    btnUrl: "#",
+  },
+];
 
-const folder = 'hero-banners'
-const { imageUrl } = useImageUrl()
+const folder = "hero-banners";
+const { imageUrl } = useImageUrl();
 </script>
 <style scoped lang="scss">
 .hero-banners {
