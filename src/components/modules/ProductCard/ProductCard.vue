@@ -4,7 +4,6 @@ import ProductWishlist from "@/components/modules/ProductCard/ProductWishlist.vu
 import ProductName from "@/components/modules/ProductCard/ProductTitle.vue";
 import ProductPrice from "@/components/modules/ProductCard/ProductPrice.vue";
 import ProductAddToCart from "@/components/modules/ProductCard/ProductAddToCart.vue";
-import { useWishlistStore } from "@/stores/useWishlistStore.js";
 import { useCartStore } from "@/stores/useCartStore.js";
 
 // Props passed into the component
@@ -18,17 +17,7 @@ const props = defineProps({
     default: false,
   },
 });
-
-const wishlistStore = useWishlistStore();
 const cartStore = useCartStore();
-
-function onToggleWishlist() {
-  if (wishlistStore.isInWishlist(props.product.id)) {
-    wishlistStore.removeFromWishlist(props.product.id);
-  } else {
-    wishlistStore.addToWishlist(props.product);
-  }
-}
 
 function onAddToCart() {
   cartStore.addToCart(props.product);
@@ -37,15 +26,14 @@ function onAddToCart() {
 </script>
 <template>
   <div class="product-card">
-    <ProductWishlist
-      v-if="!hideWishlist"
-      @toggle-wishlist="onToggleWishlist"
-      :onWishlist="wishlistStore.isInWishlist(product.id)"
-      :product="product"
-    />
-    <ProductImage :imageUrl="product?.images[0]" :title="product?.name" />
+    <ProductWishlist v-if="!hideWishlist" :product="product" />
+    <RouterLink :to="`/product/${product.id}`">
+      <ProductImage :imageUrl="product?.images[0]" :title="product?.name" />
+    </RouterLink>
     <div class="product-card-body w-full">
-      <ProductName :title="product?.name" />
+      <RouterLink :to="`/product/${product.id}`">
+        <ProductName :title="product?.name" />
+      </RouterLink>
       <ProductPrice
         :price="product?.price"
         :discounted-price="product?.discount_price"

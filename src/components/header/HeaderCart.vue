@@ -1,22 +1,24 @@
 <template>
   <div class="cart-dropdown-module h-8 relative z-10">
-    <button class="header-btn-cart relative" aria-label="Cart">
-      <IconCart />
-      <span
-        class="cart-count black-pulse absolute flex justify-center items-center rounded-full"
-        v-if="cartStore.cartCount"
-        >{{ cartStore.cartCount }}</span
-      >
-    </button>
-    <CartDropdown v-if="cartStore.cartCount" />
+    <RouterLink to="/cart" aria-label="Cyber - Ecommerce">
+      <button class="header-btn-cart relative" aria-label="Cart">
+        <IconCart />
+        <span
+          class="cart-count black-pulse absolute flex justify-center items-center rounded-full"
+          v-if="cartStore.cartCount"
+          >{{ cartStore.cartCount }}</span
+        >
+      </button>
+    </RouterLink>
+    <!-- <CartDropdown v-if="cartStore.cartCount" /> -->
   </div>
 </template>
 <script setup>
-import IconCart from '@/components/icons/commons/iconCart.vue'
-import { useCartStore } from '@/stores/useCartStore'
-import CartDropdown from './CartDropdown.vue'
+import IconCart from "@/components/icons/commons/iconCart.vue";
+import { useCartStore } from "@/stores/useCartStore";
+import CartDropdown from "./CartDropdown.vue";
 
-const cartStore = useCartStore()
+const cartStore = useCartStore();
 </script>
 <style lang="scss">
 .cart-dropdown-module:hover .cart-dropdown {

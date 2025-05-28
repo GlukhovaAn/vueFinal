@@ -1,11 +1,12 @@
 <script setup>
-import { useWishlistStore } from "@/stores/useWishlistStore";
+import { useWishlistStore } from "@/stores/wishlist.js";
 import { computed } from "vue";
 
 const wishlistStore = useWishlistStore();
 
 const wishlistItems = computed(() => wishlistStore.getWishlist);
-console.log(wishlistItems);
+
+const url = import.meta.env.VITE_BASE_ENDPOINT;
 </script>
 
 <template>
@@ -23,7 +24,7 @@ console.log(wishlistItems);
         class="flex items-center space-x-4 pb-4 border-b"
       >
         <img
-          :src="product.image"
+          :src="`${url}/${product.images[0]}`"
           alt="product image"
           class="w-24 h-24 object-contain"
         />

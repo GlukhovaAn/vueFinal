@@ -1,15 +1,15 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { RouterLink } from "vue-router";
 defineProps({
   title: {
     type: String,
-    default: 'Product name'
-  }
-})
+    default: "Product name",
+  },
+});
 </script>
 <template>
   <div class="product-title">
-    <RouterLink to="#" class="product-title-link hover:underline">{{ title }}</RouterLink>
+    <p class="product-title-link hover:underline">{{ title }}</p>
   </div>
 </template>
 <style scoped>

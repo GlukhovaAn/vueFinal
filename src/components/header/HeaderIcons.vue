@@ -1,21 +1,23 @@
 <script setup>
-import iconFavorites from '@/components/icons/commons/iconFavorites.vue'
-import iconUser from '@/components/icons/commons/iconUser.vue'
-import iconMobileMenu from '@/components/icons/commons/iconMobileMenu.vue'
-import { useWishlistStore } from '@/stores/useWishlistStore.js'
-import HeaderCart from './HeaderCart.vue'
-const wishlistStore = useWishlistStore()
+import iconFavorites from "@/components/icons/commons/iconFavorites.vue";
+import { useWishlistStore } from "@/stores/wishlist.js";
+import HeaderCart from "./HeaderCart.vue";
+import { computed } from "vue";
+const wishlistStore = useWishlistStore();
+const wishlistCount = computed(() => wishlistStore.wishlistCount);
 </script>
 <template>
   <div class="header-icons flex gap-6">
-    <button class="header-btn-favorite h-8 relative" aria-label="Wishlist">
-      <iconFavorites />
-      <span
-        class="wishlist-count red-pulse absolute flex justify-center items-center rounded-full"
-        v-if="wishlistStore.wishlistCount"
-        >{{ wishlistStore.wishlistCount }}</span
-      >
-    </button>
+    <RouterLink to="/wishlist" aria-label="Cyber - Ecommerce">
+      <button class="header-btn-favorite h-8 relative" aria-label="Wishlist">
+        <iconFavorites />
+        <span
+          class="wishlist-count red-pulse absolute flex justify-center items-center rounded-full"
+          v-if="wishlistCount > 0"
+          >{{ wishlistCount }}</span
+        >
+      </button>
+    </RouterLink>
     <HeaderCart />
   </div>
 </template>

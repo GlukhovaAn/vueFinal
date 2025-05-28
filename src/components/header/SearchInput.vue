@@ -6,7 +6,9 @@
       :class="{ active: filteredProducts.length || error }"
     ></div>
     <div class="relative rounded-md shadow-sm z-50">
-      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+      <div
+        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+      >
         <iconSearch />
       </div>
       <input
@@ -27,7 +29,10 @@
     >
       <small>Not found any product.</small>
     </div>
-    <div class="search-results absolute z-50" :class="{ active: filteredProducts.length || error }">
+    <div
+      class="search-results absolute z-50"
+      :class="{ active: filteredProducts.length || error }"
+    >
       <div class="search-results-products">
         <h3 class="mb-3">Search results:</h3>
       </div>
@@ -44,45 +49,47 @@
   </div>
 </template>
 <script setup>
-import iconSearch from '@/components/icons/commons/iconSearch.vue'
-import { ref } from 'vue'
-import MainButton from '@/components/modules/Common/MainButton.vue'
+import iconSearch from "@/components/icons/commons/iconSearch.vue";
+import { ref } from "vue";
+import MainButton from "@/components/modules/Common/MainButton.vue";
 
-const products = ref([]) // Stores the memoized full product list
-const memoizedProducts = ref(null) // Caches the first server response
-const filteredProducts = ref([]) // Stores the filtered product list
-const filteredPhrase = ref('')
-const searchInput = ref(null)
+const products = ref([]); // Stores the memoized full product list
+const memoizedProducts = ref(null); // Caches the first server response
+const filteredProducts = ref([]); // Stores the filtered product list
+const filteredPhrase = ref("");
+const searchInput = ref(null);
 
 const clearFilter = () => {
-  filteredProducts.value = []
-  filteredPhrase.value = ''
-  searchInput.value.focus()
-}
+  filteredProducts.value = [];
+  filteredPhrase.value = "";
+  searchInput.value.focus();
+};
 
 const closeFilter = () => {
-  filteredProducts.value = []
-  filteredPhrase.value = ''
-}
+  filteredProducts.value = [];
+  filteredPhrase.value = "";
+};
 
-const filter = event => {
-  const phrase = event.target.value
+const filter = (event) => {
+  const phrase = event.target.value;
   if (phrase.length > 3) {
     if (memoizedProducts.value) {
       // Filter the cached data locally
       filteredProducts.value = memoizedProducts.value
-        .filter(product => product.title.toLowerCase().includes(phrase.toLowerCase()))
-        .slice(0, 5)
+        .filter((product) =>
+          product.title.toLowerCase().includes(phrase.toLowerCase())
+        )
+        .slice(0, 5);
     } else {
-      fetchProducts(phrase)
+      fetchProducts(phrase);
     }
   }
-}
+};
 
-const loading = ref(true)
-const error = ref(null)
+const loading = ref(true);
+const error = ref(null);
 
-const fetchProducts = async phrase => {}
+const fetchProducts = async (phrase) => {};
 </script>
 <style scoped>
 .search-input-module {

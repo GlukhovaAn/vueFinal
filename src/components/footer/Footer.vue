@@ -1,28 +1,28 @@
 <script setup>
-import { ref } from 'vue'
-import FooterCustom from './FooterCustomContent.vue'
-import Socials from './Socials.vue'
-import FooterInformation from './FooterInformation.vue'
+import { ref } from "vue";
+import FooterCustom from "./FooterCustomContent.vue";
+import Socials from "./Socials.vue";
+import FooterInformation from "./FooterInformation.vue";
 
-const servicesTitle = 'Services'
+const servicesTitle = "Services";
 const servicesMenus = ref([
-  { name: 'Bonus program', id: '1', url: '#' },
-  { name: 'Gift cards', id: '2', url: '#' },
-  { name: 'Credit and payment', id: '3', url: '#' },
-  { name: 'Service contracts', id: '4', url: '#' },
-  { name: 'Non-cash account', id: '5', url: '#' },
-  { name: 'Payment', id: '6', url: '#' }
-])
+  { name: "Bonus program", id: "1", url: "#" },
+  { name: "Gift cards", id: "2", url: "#" },
+  { name: "Credit and payment", id: "3", url: "#" },
+  { name: "Service contracts", id: "4", url: "#" },
+  { name: "Non-cash account", id: "5", url: "#" },
+  { name: "Payment", id: "6", url: "#" },
+]);
 
-const assistanceTitle = 'Assistance to the buyer'
+const assistanceTitle = "Assistance to the buyer";
 const assistanceMenus = ref([
-  { name: 'Find an order', id: '1', url: '#' },
-  { name: 'Terms of delivery', id: '2', url: '#' },
-  { name: 'Exchange and return of goods', id: '3', url: '#' },
-  { name: 'Guarantee', id: '4', url: '#' },
-  { name: 'Frequently asked questions', id: '5', url: '#' },
-  { name: 'Terms of use of the site', id: '6', url: '#' }
-])
+  { name: "Find an order", id: "1", url: "#" },
+  { name: "Terms of delivery", id: "2", url: "#" },
+  { name: "Exchange and return of goods", id: "3", url: "#" },
+  { name: "Guarantee", id: "4", url: "#" },
+  { name: "Frequently asked questions", id: "5", url: "#" },
+  { name: "Terms of use of the site", id: "6", url: "#" },
+]);
 </script>
 <template>
   <section class="footer">
@@ -36,7 +36,10 @@ const assistanceMenus = ref([
         </div>
 
         <div class="footer-column footer-column-2">
-          <FooterInformation :title="assistanceTitle" :menus="assistanceMenus" />
+          <FooterInformation
+            :title="assistanceTitle"
+            :menus="assistanceMenus"
+          />
         </div>
       </div>
       <div class="mt-4">

@@ -1,14 +1,12 @@
 <template>
   <div class="product-image">
-    <RouterLink to="#">
-      <img
-        :src="`${url}/${imageUrl}`"
-        :alt="title"
-        :width="width"
-        :height="height"
-        loading="lazy"
-      />
-    </RouterLink>
+    <img
+      :src="`${url}/${imageUrl}`"
+      :alt="title"
+      :width="width"
+      :height="height"
+      loading="lazy"
+    />
   </div>
 </template>
 <script setup>
@@ -25,7 +23,6 @@ defineProps({
   title: String,
 });
 
-const folder = "products";
 const url = import.meta.env.VITE_BASE_ENDPOINT;
 </script>
 <style lang="scss">

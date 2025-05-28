@@ -1,29 +1,22 @@
 <script setup>
 import iconFavorite from "@/components/icons/commons/iconFavorite.vue";
-import { ref, defineEmits, watch } from "vue";
-import { useWishlistStore } from "@/stores/useWishlistStore";
+import { computed, defineEmits } from "vue";
+import { useWishlistStore } from "@/stores/wishlist.js";
 
 const props = defineProps({
   product: Object,
-  onWishlist: Boolean,
 });
 
 const emit = defineEmits(["toggle-wishlist"]);
-const selected = ref(props.onWishlist);
 
 const wishlistStore = useWishlistStore();
 
-watch(
-  () => props.onWishlist,
-  (newVal) => {
-    selected.value = newVal;
-  }
-);
+const selected = computed(() => {
+  return wishlistStore.getWishlist.some((p) => p.id === props.product.id);
+});
 
 function toggleWishlist() {
-  selected.value = !selected.value;
-
-  if (selected.value) {
+  if (!selected.value) {
     wishlistStore.addToWishlist(props.product);
   } else {
     wishlistStore.removeFromWishlist(props.product.id);
