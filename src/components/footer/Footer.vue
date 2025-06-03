@@ -24,30 +24,31 @@ const assistanceMenus = ref([
   { name: "Terms of use of the site", id: "6", url: "#" },
 ]);
 </script>
+
 <template>
   <section class="footer">
-    <div class="container">
-      <div class="footer-rows grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="footer-column footer-column-1 pr-10">
+    <div class="footer-container">
+      <div class="footer-rows">
+        <div class="footer-column footer-column-1">
           <FooterCustom />
         </div>
         <div class="footer-column footer-column-2">
           <FooterInformation :title="servicesTitle" :menus="servicesMenus" />
         </div>
-
-        <div class="footer-column footer-column-2">
+        <div class="footer-column footer-column-3">
           <FooterInformation
             :title="assistanceTitle"
             :menus="assistanceMenus"
           />
         </div>
       </div>
-      <div class="mt-4">
+      <div class="footer-socials">
         <Socials />
       </div>
     </div>
   </section>
 </template>
+
 <style scoped>
 .footer {
   background: #000;
@@ -59,7 +60,37 @@ const assistanceMenus = ref([
     padding: 6.5rem 0;
   }
 }
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-rows {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer-rows {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer-column {
+  padding-right: 0;
+}
+
+.footer-column-1 {
+  padding-right: 2.5rem;
+}
+
+.footer-socials {
+  margin-top: 1rem;
+}
 </style>
+
 <style>
 .footer .logo {
   color: #fff;

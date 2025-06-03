@@ -1,58 +1,69 @@
 <template>
-  <div class="cart-dropdown absolute">
+  <div class="cart-dropdown">
     <template v-for="item in cartStore.cart" :key="item.id">
-      <div class="cart-dropdown-snapshot flex mb-3 w-full">
+      <div class="cart-dropdown-snapshot">
         <div class="cart-dropdown-snapshot-left">
           <ProductImage
             :imageThumb="item.imageThumb"
-            :width="parseInt(40)"
-            :height="parseInt(40)"
+            :width="40"
+            :height="40"
             :title="item.title"
             :href="'#'"
-            class="p-0 w-10"
+            class="product-image"
           />
         </div>
-        <div class="cart-dropdown-snapshot-right pl-2 w-full">
+        <div class="cart-dropdown-snapshot-right">
           <div class="cart-dropdown-snapshot-title">
             <ProductTitle :title="item.title" :href="'#'" />
           </div>
-          <div class="cart-dropdown-snapshot-right-action flex justify-between">
+          <div class="cart-dropdown-snapshot-right-action">
             <small class="cart-dropdown-qty">{{ item.quantity }} qty</small>
-            <small
-              class="cart-dropdown-delete text-red-500 cursor-pointer hover:underline"
-              @click="removeFromCart(item.id)"
+            <small class="cart-dropdown-delete" @click="removeFromCart(item.id)"
               >delete</small
             >
           </div>
         </div>
       </div>
     </template>
-    <div class="cart-dropdown-total flex justify-between mb-2">
+    <div class="cart-dropdown-total">
       <strong>Total:</strong>
       <small
         ><strong>${{ cartStore.cartTotalPrice }}</strong></small
       >
     </div>
-    <div class="cart-dropdown-actions flex justify-between">
-      <MainButton variant="secondary" :title="'To cart'" size="small" :href="'#'" />
-      <MainButton variant="primary" :title="'To checkout'" size="small" :href="'#'" />
+    <div class="cart-dropdown-actions">
+      <MainButton
+        variant="secondary"
+        :title="'To cart'"
+        size="small"
+        :href="'#'"
+      />
+      <MainButton
+        variant="primary"
+        :title="'To checkout'"
+        size="small"
+        :href="'#'"
+      />
     </div>
   </div>
 </template>
+
 <script setup>
-import { useCartStore } from '@/stores/useCartStore'
-import ProductImage from '@/components/modules/ProductCard/ProductImage.vue'
-import ProductTitle from '@/components/modules/ProductCard/ProductTitle.vue'
-import MainButton from '@/components/modules/Common/MainButton.vue'
+import { useCartStore } from "@/stores/useCartStore";
+import ProductImage from "@/components/modules/ProductCard/ProductImage.vue";
+import ProductTitle from "@/components/modules/ProductCard/ProductTitle.vue";
+import MainButton from "@/components/modules/Common/MainButton.vue";
 
-const cartStore = useCartStore()
+const cartStore = useCartStore();
 
-const removeFromCart = productId => {
-  cartStore.removeFromCart(productId)
-}
+const removeFromCart = (productId) => {
+  cartStore.removeFromCart(productId);
+};
 </script>
+
 <style lang="scss">
 .cart-dropdown {
+  position: absolute;
   top: 100%;
   right: 0;
   display: block;
@@ -71,6 +82,44 @@ const removeFromCart = productId => {
 
 .product-image {
   padding: 0;
+  width: 160px;
+}
+
+.cart-dropdown-snapshot {
+  display: flex;
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+.cart-dropdown-snapshot-right {
+  padding-left: 0.5rem;
+  width: 100%;
+}
+
+.cart-dropdown-snapshot-right-action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-dropdown-delete {
+  color: #ef4444; /* Tailwind's text-red-500 */
+  cursor: pointer;
+  transition: text-decoration 0.2s ease;
+}
+
+.cart-dropdown-delete:hover {
+  text-decoration: underline;
+}
+
+.cart-dropdown-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.cart-dropdown-actions {
+  display: flex;
+  justify-content: space-between;
 }
 
 .cart-dropdown-snapshot .product-title {

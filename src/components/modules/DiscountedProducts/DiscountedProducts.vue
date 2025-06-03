@@ -16,7 +16,6 @@ export default {
   components: { ProductModule },
   setup() {
     const limit = 4;
-    // for skeleton product cards
     const products = ref(
       Array(limit)
         .fill()

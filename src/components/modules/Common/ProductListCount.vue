@@ -1,20 +1,30 @@
 <template>
-  <div class="product-list-count flex items-center">
-    <span class="label text-md font-normal">Selected Products:</span>
-    <span class="number text-xl ml-2">{{ count }}</span>
+  <div class="product-list-count">
+    <span class="label">Selected Products:</span>
+    <span class="number">{{ count }}</span>
   </div>
 </template>
-<script setup>
-defineProps({ count: Number })
-</script>
-<style lang="scss">
-.product-list-count {
-  .label {
-    color: var(--vt-c-black-mute);
-  }
 
-  .number {
-    color: #000;
-  }
+<script setup>
+defineProps({ count: Number });
+</script>
+
+<style scoped>
+.product-list-count {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--vt-c-black-mute);
+}
+
+.number {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin-left: 8px;
 }
 </style>

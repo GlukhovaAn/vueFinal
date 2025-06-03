@@ -132,6 +132,10 @@ const smallBanners = ref([
     font-size: 29px;
   }
 
+  .small-banner-item-2 .small-banner-title h2 {
+    color: #fff;
+  }
+
   .small-banner-item-3 .small-banner-title h2 {
     font-size: 49px;
   }

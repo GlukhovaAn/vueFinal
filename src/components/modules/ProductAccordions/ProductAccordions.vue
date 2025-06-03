@@ -1,22 +1,22 @@
 <template>
-  <div class="product-accordions container">
-    <div class="product-accordion-menu mb-8">
-      <ul class="flex gap-6 md:gap-8">
+  <div class="product-accordions">
+    <div class="product-accordion-menu">
+      <ul>
         <li
           @click="fetchProducts('newArrival')"
-          :class="[isActive === 'newArrival' ? 'selected' : '']"
+          :class="{ selected: isActive === 'newArrival' }"
         >
           New Arrival
         </li>
         <li
           @click="fetchProducts('bestSeller')"
-          :class="[isActive === 'bestSeller' ? 'selected' : '']"
+          :class="{ selected: isActive === 'bestSeller' }"
         >
           Bestseller
         </li>
         <li
           @click="fetchProducts('featured')"
-          :class="[isActive === 'featured' ? 'selected' : '']"
+          :class="{ selected: isActive === 'featured' }"
         >
           Featured Products
         </li>
@@ -26,9 +26,11 @@
     <ProductModule :error="error" :loading="loading" :products="products" />
   </div>
 </template>
+
 <script>
 import { ref, onMounted } from "vue";
 import ProductModule from "../Common/ProductModule.vue";
+
 export default {
   components: { ProductModule },
   setup() {
@@ -83,13 +85,32 @@ export default {
   },
 };
 </script>
-<style>
+
+<style scoped>
+.product-accordions {
+  padding: 1rem;
+  max-width: 1120px;
+  margin: auto;
+}
+
+.product-accordion-menu {
+  margin-bottom: 2rem;
+}
+
+.product-accordion-menu ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .product-accordion-menu li {
   color: #8b8b8b;
   font-weight: 500;
   cursor: pointer;
   position: relative;
-  transition: var(--transition);
+  transition: color 0.3s ease;
 }
 
 .product-accordion-menu li:hover,
@@ -97,14 +118,13 @@ export default {
   color: #000;
 }
 
-.product-accordion-menu li.selected:after {
+.product-accordion-menu li.selected::after {
   content: "";
-  display: block;
   position: absolute;
   bottom: -3px;
   left: 0;
   width: 100%;
   height: 2px;
-  background: #000;
+  background-color: #000;
 }
 </style>

@@ -27,7 +27,7 @@ function toggleWishlist() {
 </script>
 
 <template>
-  <div class="product-header flex justify-end w-full">
+  <div class="product-header">
     <button
       class="btn-favorite"
       @click="toggleWishlist"
@@ -38,11 +38,26 @@ function toggleWishlist() {
   </div>
 </template>
 
-<style>
-.btn-favorite:hover svg path {
+<style scoped>
+.product-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.btn-favorite {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-favorite:hover .icon-favorite {
   stroke: #ff0000;
 }
-.btn-favorite.selected svg path {
+
+.btn-favorite.selected .icon-favorite {
   stroke: #ff0000;
   fill: #ff0000;
 }

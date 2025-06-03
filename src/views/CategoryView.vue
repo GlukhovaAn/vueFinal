@@ -1,8 +1,10 @@
 <template>
   <div class="container pb-6">
-    <div class="category-content-wrapper">
-      <div class="product-filter"></div>
-      <div class="product-list">
+    <div class="category-content-wrapper flex gap-6">
+      <div class="product-filter w-[280px] shrink-0">
+        <FilterSidebar />
+      </div>
+      <div class="product-list flex-1">
         <div class="product-list-top flex justify-between py-3">
           <ProductListCount :count="totalItemCount" />
           <Dropdown
@@ -35,6 +37,7 @@ import ProductModule from "@/components/modules/Common/ProductModule.vue";
 import Pagination from "@/components/modules/Common/Pagination.vue";
 import ProductListCount from "@/components/modules/Common/ProductListCount.vue";
 import Dropdown from "@/components/modules/Common/Dropdown.vue";
+import FilterSidebar from "@/components/modules/Common/FilterSidebar.vue";
 
 export default {
   components: {
@@ -42,6 +45,7 @@ export default {
     Pagination,
     ProductListCount,
     Dropdown,
+    FilterSidebar,
   },
   setup() {
     const route = useRoute();
